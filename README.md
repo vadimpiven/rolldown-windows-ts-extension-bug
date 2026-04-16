@@ -40,4 +40,4 @@ Error [ERR_MODULE_NOT_FOUND]: Cannot find module
 ## Environment
 
 - `rolldown` 1.0.0-rc.16 (latest)
-- Node.js 22 (reproduced on 22.22.2, `windows-latest` runner)
+- Node.js 24 (`windows-latest` runner)
