@@ -1,0 +1,15 @@
+{
+  "name": "rolldown-windows-ts-extension-bug",
+  "version": "0.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "build": "rolldown -c rolldown.config.mjs",
+    "show": "node scripts/show-dist.mjs",
+    "run-dist": "node dist/index.js"
+  },
+  "devDependencies": {
+    "rolldown": "1.0.0-rc.16",
+    "typescript": "6.0.2"
+  }
+}
