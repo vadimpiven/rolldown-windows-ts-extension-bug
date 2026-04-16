@@ -5,6 +5,7 @@ export default defineConfig({
   output: {
     dir: "dist",
     format: "es",
+    entryFileNames: (chunkInfo) => `[name].js`,
     preserveModules: true,
     preserveModulesRoot: "src",
   },
