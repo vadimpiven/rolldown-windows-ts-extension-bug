@@ -3,14 +3,12 @@ import { defineConfig } from "rolldown";
 export default defineConfig({
   input: ["./src/index.ts"],
 
-  // external() sees two calls per import:
-  //   1. unresolved:  "./helper"
-  //   2. resolved:    POSIX    → "/home/.../src/helper.ts"   (starts with '/')
-  //                   Windows  → "D:\\...\\src\\helper.ts"   (starts with a drive letter)
-  //
-  // This regex is meant to match bare specifiers only, but on Windows it also
-  // matches the resolved absolute path, so the local file is marked external.
-  external: (id) => /^[^./]/.test(id),
+  // Option A: only classify at the unresolved-specifier phase.
+  // On the resolved call, Rolldown hands back absolute paths whose shape
+  // differs by platform (POSIX "/...", Windows "D:\\..."); classifying
+  // those as external is never what the user intends and produces
+  // broken imports in preserveModules output.
+  external: (id, _importer, isResolved) => !isResolved && /^[^./]/.test(id),
 
   output: {
     dir: "dist",
