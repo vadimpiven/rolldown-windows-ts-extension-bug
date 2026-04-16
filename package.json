@@ -8,8 +8,6 @@
     "start": "node dist/index.js"
   },
   "devDependencies": {
-    "rolldown": "1.0.0-rc.16",
-    "rolldown-plugin-dts": "0.23.2",
-    "typescript": "6.0.2"
+    "rolldown": "1.0.0-rc.16"
   }
 }

@@ -1,1 +1,3 @@
-export * from "./helper";
+import { greet } from "./helper";
+
+console.log(greet("world"));
