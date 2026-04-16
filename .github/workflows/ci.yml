@@ -7,28 +7,21 @@ on:
 
 jobs:
   build:
-    name: Build and run on ${{ matrix.os }}
+    name: ${{ matrix.os }}
     runs-on: ${{ matrix.os }}
     strategy:
       fail-fast: false
       matrix:
         os: [ubuntu-latest, macos-latest, windows-latest]
-
+    defaults:
+      run:
+        shell: bash
     steps:
-      - uses: actions/checkout@v4
-
-      - uses: actions/setup-node@v4
+      - uses: actions/checkout@v6
+      - uses: actions/setup-node@v6
         with:
           node-version: 22
-
-      - name: Install
-        run: npm install
-
-      - name: Build
-        run: npm run build
-
-      - name: Show dist/index.js
-        run: npm run show
-
-      - name: Run dist/index.js
-        run: npm run run-dist
+      - run: npm install
+      - run: npm run build
+      - run: cat dist/index.js
+      - run: npm start
